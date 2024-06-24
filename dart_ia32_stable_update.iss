@@ -44,7 +44,7 @@ WizardImageFile=assets\dart-logo-wordmark.bmp
 WizardSmallImageFile=assets\dart-small.bmp
 WizardImageStretch=no
 
-#include <idp.iss>
+#include <C:/Program Files (x86)/Inno Download Plugin/idp.iss>
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -74,10 +74,10 @@ DartLatestVersion=Latest (stable) version: %1
 
 [Code]
 // SO: http://stackoverflow.com/questions/3304463/
-function NeedsAddPath(Param: string): Boolean;
+function NeedsAddPath(Param: String): Boolean;
 var
-  OrigPath: string;
-  ParamExpanded: string;
+  OrigPath: String;
+  ParamExpanded: String;
 begin
   // Expand the setup constants like {app} from Param
   ParamExpanded := ExpandConstant(Param);
@@ -94,9 +94,9 @@ begin
 end;
 
 // Internet latest revision
-function GetCurRevision(Param: string): string;
+function GetCurRevision(Param: AnsiString): AnsiString;
 var
-  FormattedRevision: string;
+  FormattedRevision: AnsiString;
   Index: Integer;
 begin
   FormattedRevision := Param;
@@ -110,11 +110,11 @@ begin
 end;
 
 // Installed revision
-function GetInsRevision(PathToApp: string): string;
+function GetInsRevision(PathToApp: AnsiString): AnsiString;
 var
-  FormattedRevision: string;
+  FormattedRevision: AnsiString;
   Index: Integer;
-  RevisionFile: string;
+  RevisionFile: AnsiString;
 begin
   LoadStringFromFile(PathToApp + 'dart-sdk\revision', FormattedRevision);
   FormattedRevision := Trim(FormattedRevision);
@@ -123,9 +123,9 @@ begin
 end;
 
 // Internet latest version
-function GetCurVersion(Param: string): string;
+function GetCurVersion(Param: AnsiString): AnsiString;
 var
-  FormattedRevision: string;
+  FormattedRevision: AnsiString;
   Index: Integer;
 begin
   FormattedRevision := Param;
@@ -141,11 +141,11 @@ begin
 end;
 
 // Installed version
-function GetInsVersion(PathToApp: string): string;
+function GetInsVersion(PathToApp: AnsiString): AnsiString;
 var
-  FormattedRevision: string;
+  FormattedRevision: AnsiString;
   Index: Integer;
-  RevisionFile: string;
+  RevisionFile: AnsiString;
 begin
   LoadStringFromFile(PathToApp + 'dart-sdk\version', FormattedRevision);
   FormattedRevision := Trim(FormattedRevision);
@@ -164,9 +164,9 @@ begin
   idpDownloadAfter(wpReady);
 end;
 
-procedure DoUnzip(Source: string; targetdir: string);
+procedure DoUnzip(Source: AnsiString; targetdir: AnsiString);
 var 
-  unzipTool: string;
+  unzipTool: AnsiString;
   ReturnCode: Integer;
 begin
   // Source contains tmp constant, so resolve it to path name
@@ -187,9 +187,9 @@ begin
   end;
 end;
 
-function TryGetFirstSubfolder(const Path: string; out Folder: string): Boolean;
+function TryGetFirstSubfolder(const Path: AnsiString; out Folder: AnsiString): Boolean;
 var
-  S: string;
+  S: AnsiString;
   FindRec: TFindRec;
 begin
   Result := FALSE;
@@ -210,12 +210,12 @@ end;
 
 procedure CurPageChanged(CurPageID: Integer); 
 var
-  SilUpdate: string;
-  Current: string;
-  Installed: string;
-  CurrentVersion: string;
-  InstalledVersion: string;
-  S: string;
+  SilUpdate: AnsiString;
+  Current: AnsiString;
+  Installed: AnsiString;
+  CurrentVersion: AnsiString;
+  InstalledVersion: AnsiString;
+  S: AnsiString;
   Page: TWizardPage;
   InstalledLabel: TNewStaticText;
   LatestLabel: TNewStaticText;

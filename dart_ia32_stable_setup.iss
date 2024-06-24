@@ -38,7 +38,7 @@ WizardImageFile=assets\dart-logo-wordmark.bmp
 WizardSmallImageFile=assets\dart-small.bmp
 WizardImageStretch=no
 
-#include <idp.iss>
+#include <C:/Program Files (x86)/Inno Download Plugin/idp.iss>
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -64,10 +64,10 @@ DartLatestVersion=The latest stable version will be installed: %1
 [Code]
 // SO: http://stackoverflow.com/questions/3304463/
 
-function NeedsAddPath(Param: string): Boolean;
+function NeedsAddPath(Param: String): Boolean;
 var
-  OrigPath: string;
-  ParamExpanded: string;
+  OrigPath: String;
+  ParamExpanded: String;
 begin
   // Expand the setup constants like {app} from Param
   ParamExpanded := ExpandConstant(Param);
@@ -86,9 +86,9 @@ begin
 end;
 
 // Internet latest version
-function GetCurVersion(Param: string): string;
+function GetCurVersion(Param: AnsiString): AnsiString;
 var
-  FormattedRevision: string;
+  FormattedRevision: AnsiString;
   Index: Integer;
 begin
   FormattedRevision := Param;
@@ -114,9 +114,9 @@ begin
   idpDownloadAfter(wpReady);
 end;
 
-procedure DoUnzip(Source: string; targetdir: string);
+procedure DoUnzip(Source: AnsiString; targetdir: AnsiString);
 var 
-  unzipTool: string;
+  unzipTool: AnsiString;
   ReturnCode: Integer;
 begin
   // Source contains tmp constant, so resolve it to path name
@@ -138,9 +138,9 @@ begin
   end;
 end;
 
-function TryGetFirstSubfolder(const Path: string; out Folder: string): Boolean;
+function TryGetFirstSubfolder(const Path: AnsiString; out Folder: AnsiString): Boolean;
 var
-  S: string;
+  S: AnsiString;
   FindRec: TFindRec;
 begin
   Result := FALSE;
@@ -162,9 +162,9 @@ end;
 
 procedure CurPageChanged(CurPageID: Integer);
 var
-  S: string;
-  SilUpdate: string;
-  CurrentVersion: string;
+  S: AnsiString;
+  SilUpdate: AnsiString;
+  CurrentVersion: AnsiString;
   Page: TWizardPage;
   LatestLabel: TNewStaticText;
 begin
