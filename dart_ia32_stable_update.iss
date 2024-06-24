@@ -160,7 +160,7 @@ begin
   idpSetOption('ConnectTimeout', '90000');
   idpSetOption('SendTimeout', '90000');
   idpSetOption('ReceiveTimeout', '90000');
-  idpAddFile('https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-windows-ia32-release.zip', ExpandConstant('{tmp}\dart-sdk.zip'));
+  idpAddFile('https://storage.googleapis.com/dart-archive/channels/stable/release/3.3.4/sdk/dartsdk-windows-ia32-release.zip', ExpandConstant('{tmp}\dart-sdk.zip'));
   idpDownloadAfter(wpReady);
 end;
 
@@ -224,7 +224,7 @@ begin
   if CurPageID = wpReady then
   begin
     // Download VERSION text file
-    if idpDownloadFile('https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION', ExpandConstant('{tmp}\VERSION.txt')) then
+    if idpDownloadFile('https://storage.googleapis.com/dart-archive/channels/stable/release/3.3.4/VERSION', ExpandConstant('{tmp}\VERSION.txt')) then
     begin
       // Version fetched
       // Read the file and transform the String to: int.int.int. ... .int
